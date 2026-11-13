@@ -1,0 +1,9 @@
+{
+  "title": "BIGGER! The Dev Log",
+  "tagline": "How a solo student built a falling-sand film-set game in four days, with Claude Code and Unreal Engine 5.9.",
+  "author": "Duncan Rose",
+  "theme": "screening",
+  "base_url": "https://derbadunkadunk.github.io/bigger-devlog/",
+  "intro": "<p><strong>BIGGER!</strong> is my solo entry to the Epic AI MegaJam 2026 (theme: <em>Director's Cut</em>). You're the special effects supervisor on a film shoot: rig the set, yell ACTION, and the director only ever wants one thing. Under every set runs a 3D falling-sand simulation, and your best takes are re-simulated into the Director's Cut.</p><p>One post a day while I build it, then the full story.</p>",
+  "footer": "BIGGER! is a solo entry to the Epic AI MegaJam 2026, made in Unreal Engine 5.9. Written by me; the facts are checked against my raw dev log."
+}

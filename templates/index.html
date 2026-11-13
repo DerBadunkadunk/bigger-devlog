@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$site_title</title>
+<meta name="description" content="$tagline">
+<meta property="og:title" content="$site_title">
+<meta property="og:description" content="$tagline">
+<meta property="og:url" content="$base_url">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="${root}static/style.css">
+</head>
+<body class="theme-$theme">
+<header class="mast">
+  <a class="mark" href="${root}">BIGGER!<span>The Dev Log</span></a>
+  <nav><a href="${root}">All posts</a></nav>
+</header>
+<div class="tiles" aria-hidden="true"></div>
+<main class="index">
+  <header class="head">
+    <p class="kicker">Epic AI MegaJam 2026 · Unreal Engine 5.9 · Solo</p>
+    <h1>BIGGER! The Dev Log</h1>
+    <p class="standfirst">$tagline</p>
+  </header>
+  <div class="body intro">$intro</div>
+  <div class="cards">$cards</div>
+</main>
+<footer class="foot"><div class="tiles" aria-hidden="true"></div><p>$footer</p></footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$title · $site_title</title>
+<meta name="description" content="$description">
+<meta property="og:type" content="article">
+<meta property="og:title" content="$title">
+<meta property="og:description" content="$description">
+<meta property="og:image" content="$og_image">
+<meta property="og:url" content="$base_url$slug/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="${root}static/style.css">
+</head>
+<body class="theme-$theme">
+<header class="mast">
+  <a class="mark" href="${root}">BIGGER!<span>The Dev Log</span></a>
+  <nav><a href="${root}">All posts</a></nav>
+</header>
+<div class="tiles" aria-hidden="true"></div>
+<main>
+<article>
+  <header class="head">
+    <p class="kicker">$kicker</p>
+    <h1>$title</h1>
+    <p class="standfirst">$standfirst</p>
+    <p class="byline">By $author <span>·</span> $dateline <span>·</span> $minutes min read</p>
+  </header>
+  $hero
+  <div class="body">
+$body
+  </div>
+</article>
+<nav class="prevnext">$prev $next</nav>
+</main>
+<footer class="foot"><div class="tiles" aria-hidden="true"></div><p>$footer</p></footer>
+</body>
+</html>
