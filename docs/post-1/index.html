@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A day ahead of schedule · BIGGER! The Dev Log</title>
+<meta name="description" content="Night 0 and the first full day: a falling-sand sim pulled into 3D, three looks thrown out, a car made of sand, and a water tower that refused to fall over.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A day ahead of schedule">
+<meta property="og:description" content="Night 0 and the first full day: a falling-sand sim pulled into 3D, three looks thrown out, a car made of sand, and a water tower that refused to fall over.">
+<meta property="og:image" content="https://derbadunkadunk.github.io/bigger-devlog/media/D3-1401-scene2-flood-and-fire.jpg">
+<meta property="og:url" content="https://derbadunkadunk.github.io/bigger-devlog/post-1/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../static/style.css">
+</head>
+<body class="theme-screening">
+<header class="mast">
+  <a class="mark" href="../">BIGGER!<span>The Dev Log</span></a>
+  <nav><a href="../">All posts</a></nav>
+</header>
+<div class="tiles" aria-hidden="true"></div>
+<main>
+<article>
+  <header class="head">
+    <p class="kicker">Post 1 · Night 0 + Thursday</p>
+    <h1>A day ahead of schedule</h1>
+    <p class="standfirst">Night 0 and the first full day: a falling-sand sim pulled into 3D, three looks thrown out, a car made of sand, and a water tower that refused to fall over.</p>
+    <p class="byline">By Duncan Rose <span>·</span> Nov 11–13, 2026 <span>·</span> 8 min read</p>
+  </header>
+  <figure class="hero"><img src="../media/D3-1401-scene2-flood-and-fire.jpg" alt="A voxel western street: water floods the ground under a raised iron tank, and a wooden saloon is on fire."><figcaption>Scene 2, the Saloon Flood, in an early scripted take: water pours from the tank and floods the street while the saloon burns. Thu 2:01 PM.</figcaption></figure>
+  <div class="body">
+<p>Welcome to BIGGER!, where your job is to come up with the most spectacular SFX you can for each of the movie&rsquo;s unique scenes. Once the job is done, you are treated to the final film with your best shots. Just remember: the Director always wants you to go BIGGER!</p>
+<h2>Night 0: sand on screen</h2>
+<p>When I first heard the theme for this game jam was &lsquo;Director&rsquo;s Cut&rsquo;, I was very excited, because I knew I would be able to utilize the theme in two different ways. The first was the one feature that I&rsquo;ve always had to (Director&rsquo;s) cut: falling-sand fluid physics and interactions, but in a unique way or direction. The second was integrating it into a movie- and set-based game. The idea was to combine the two into a game where you interact with the falling-sand systems to create your own special effects for different scenes.</p>
+<p>As you can see in the images below, I went through some iterations until I had a halfway satisfactory fluid system. I noticed water falling in even bars; Claude found that every grain sped up the same way, and a coin flip fixed it. Claude was excellent for this use case, as it created the sim for me in C++ in a timeframe I would never have managed. Once I was at this point, I knew I had to make it unique and interesting, and differentiate it from other falling-sand games.</p>
+<div class="pair">
+<figure class=""><img src="../media/D1-0010-water-banding-before.jpg" alt="Water falling off a ramp in evenly spaced horizontal bars." loading="lazy"><figcaption>12:10 AM: water off the ramp falls in even bars.</figcaption></figure>
+<figure class=""><img src="../media/D1-0012-water-banding-after.jpg" alt="The same pour falling as an irregular stream." loading="lazy"><figcaption>12:12 AM: each grain speeds up on a coin flip, and the bars break into a stream.</figcaption></figure>
+</div>
+<h2>Three looks, all wrong</h2>
+<p>Two hours into the jam, I had Claude put three looks side by side on one sheet: a miniature diorama, a glossy blockbuster and a clean toon, all running the same frozen frame of the same sim. They were all decent enough, but I immediately knew none of them was what I was going for, or interesting enough. Another issue was that I wasn&rsquo;t sure how to make SFX creation work from a 2D side view. With both of these concerns in mind, it was clear I had to rethink the look.</p>
+<figure class=""><img src="../media/D1-0105-style-spike-sheet.jpg" alt="A sheet comparing four looks of the same falling-sand frame." loading="lazy"><figcaption>1:05 AM: one frozen frame, three looks plus a control. I turned all three down.</figcaption></figure>
+<p>At this point, Claude laid out three ways to bring the sand into 3D and recommended voxels, which is where I&rsquo;d assumed we&rsquo;d go. I agreed, with one condition:</p>
+<blockquote class="pull">
+<p>Voxel destruction based games are extremely common and the last thing I want is for this to look or play like other games.</p>
+<p><cite>Me, Thu 1:15–2:00 AM</cite></p>
+</blockquote>
+<p>I asked Claude for a look sheet of some possibilities and received not-bad results. It drew the 3D sand as clay, tiny grains and smooth toys, but the voxels looked strange (ugly) and also too familiar (cookie-cutter voxel). I started to panic. I wasn&rsquo;t sure I was going to be able to accomplish the look, or, more importantly, the gameplay I had dreamed up, and I was worried I was going to have to start totally fresh and come up with a new plan.</p>
+<p>So I suggested 2D particles in a 3D world. Claude mocked up two versions, and one was a true marriage between the two: a 3D sim drawn as pixel tiles. This look fit almost exactly what I had in my head, while letting us play with falling sand and explosives in 3D.</p>
+<div class="pair">
+<figure class=""><img src="../media/D1-0135-3d-look-spike-sheet.jpg" alt="One 3D sand frame drawn three ways: clay, tiny grains and smooth toy surfaces." loading="lazy"><figcaption>1:35 AM: round two, the same 3D frame as clay, tiny grains and smooth toys. It looked strange.</figcaption></figure>
+<figure class=""><img src="../media/D1-0155-pixels-in-3d-AB-sheet.jpg" alt="A sheet comparing two 3D looks of the same take." loading="lazy"><figcaption>1:55 AM: round three. A, the 3D sim drawn as pixel tiles, became the look.</figcaption></figure>
+</div>
+<h2>How I work: one conversation per pass</h2>
+<p>I have three custom Claude skills that I made and utilize throughout this project. They are very simple, but they let me build out each feature or step I have planned methodically and completely.</p>
+<figure class="side"><img src="../media/sidebar-bigger-jam.png" alt="A sidebar group named BIGGER! jam, listing eight conversations from the jam setup up to this dev blog." loading="lazy"><figcaption>My sidebar: one conversation per pass, oldest at the bottom. The top one is this blog.</figcaption></figure>
+<p>The first is my /pass skill, which breaks what we need to complete into sensible, orderly &lsquo;passes&rsquo;. Each pass gets its own fresh Claude conversation, at the very least, and usually begins with questions (with recommendations), look-first sheets (if the work is visual), then the build, tests that prove they can fail, and a commit.</p>
+<p>The second is my /handoff skill, which I use at the end of each pass, or when the context in a session is getting too large. It makes sure the work in that conversation is buttoned up and documented, creates a handoff document for the next conversation to read (essentially everything needed for that pass), and finally gives me the prompt to start that new conversation with. This workflow also makes it very easy to know where you are in the project, and which conversation holds which piece of the work.</p>
+<p>The third is my dev-knowledge plugin (multiple skills), which contains the tips and preferences I&rsquo;ve learned from using different engines and tools, such as Unreal, Meshy, packaging, etc.</p>
+<aside class="box timeline"><p class="box-title">Seven conversations so far</p><ol><li><span class="tl-when">Wed 11:05 PM</span><span class="tl-what">Setup and jam start</span><span class="tl-note">Project created, Unreal MCP checked, first Diversion commit at 11:31 PM.</span></li><li><span class="tl-when">Wed 11:46 PM</span><span class="tl-what">Night 0: the falling-sand grid</span><span class="tl-note">Ten questions. First pour by hand at 12:19 AM.</span></li><li><span class="tl-when">Thu 12:35 AM</span><span class="tl-what">Day 1: reactions and style spike</span><span class="tl-note">Fire, the move into 3D, the first deterministic blast.</span></li><li><span class="tl-when">Thu 2:40 AM</span><span class="tl-what">Day 2: game loop</span><span class="tl-note">Take record, first package, the first full take.</span></li><li><span class="tl-when">Thu 4:13 AM</span><span class="tl-what">Scene 1 and packaging</span><span class="tl-note">The Rodin car, three play tests, liquids that read.</span></li><li><span class="tl-when">Thu 9:10 AM</span><span class="tl-what">Scenes 2 and 3</span><span class="tl-note">Floods, falling solids, the reel, stress and tipping, rigging shots.</span></li><li><span class="tl-when">Thu 10:34 PM</span><span class="tl-what">The juice pass</span><span class="tl-note">Shake, flashes, Niagara, fire lights, the Prep drift.</span></li></ol></aside>
+
+<aside class="box">
+<p class="box-title">The toolkit</p>
+<ul>
+<li><strong><code>pass</code></strong> (my skill, written before the jam): questions with recommendations first, a model plan, look-first sheets before anything visual, rule bends named before they&rsquo;re made, every test re-run, and a ledger of which model did what.</li>
+<li><strong><code>handoff</code></strong> (mine, pre-jam): closes a conversation, commits, writes the next pass&rsquo;s brief and gives me the opening prompt for a fresh conversation.</li>
+<li><strong><code>dev-knowledge</code></strong> (mine, pre-jam): my own notes on Unreal, packaging and AI-mesh cleanup, read before touching those tools.</li>
+<li><strong>Unreal MCP</strong> (built into UE 5.9): Claude drives the editor directly. <strong>Diversion</strong> for the game&rsquo;s version control, <strong>Hyper3D Rodin</strong> for models, <strong>Blender</strong> run headless from scripts, <strong>ElevenLabs</strong> for the director&rsquo;s voice.</li>
+</ul>
+</aside>
+<aside class="box">
+<p class="box-title">How I work with AI</p>
+<ul>
+<li><strong>I decide:</strong> the idea, every look (picked from sheets), the scenes, every play test and what it should feel like.</li>
+<li><strong>Claude (Opus 5.5)</strong> writes the C++ and the scripts, drives the editor, shoots the sheets and clips, runs the tests and packages the game.</li>
+<li><strong>A second model (Fable 5.2)</strong> reviews most of the big designs before they&rsquo;re built.</li>
+<li><strong>A Sonnet 5.5 subagent</strong> did one cleanup job: removing the old 2D code, with every line of its change read before it went in.</li>
+<li><strong>Claude never posts or submits for me.</strong></li>
+</ul>
+</aside>
+<h2>What&rsquo;s done</h2>
+<p>Currently, each scene starts with the brief, outlining the scene and the goals to achieve. You then have access to different fluids and explosives to try to create the best SFX you can. When you&rsquo;re ready, the Director yells &lsquo;Action!&rsquo; and you get to see whether your stuntman makes it through in one piece. When you have completed all the scenes, a &lsquo;Director&rsquo;s Cut&rsquo; is re-simulated from each take&rsquo;s record, showing you your best takes. I also have the basic look and models outlined, created and implemented. Time permitting, I plan to go over everything with a fine-tooth comb, as I haven&rsquo;t yet spent the time I&rsquo;d like to on each asset.</p>
+<figure class=""><img src="../media/D2-0321-first-cut-card.jpg" alt="A CUT card over a voxel car: &quot;CUT! That's it? I said BIGGER!&quot; with zero stars." loading="lazy"><figcaption>3:21 AM: the first full take, played by a script. 0 stars, 9% of the car destroyed.</figcaption></figure>
+<div class="pair">
+<figure class=""><img src="../media/D2-0416-rodin-car-threequarter.jpg" alt="A red 1970s sedan model on a grey background." loading="lazy"><figcaption>4:16 AM: the car from Rodin, one text prompt, cleaned in Blender and checked for logos.</figcaption></figure>
+<figure class=""><img src="../media/D2-0430-car-look-sheet.jpg" alt="A sheet of four voxel cars in a street set." loading="lazy"><figcaption>4:30 AM: the car as cells, four ways. I picked the hollow shell: it opens up when it blows.</figcaption></figure>
+</div>
+<div class="wide">
+<figure class=""><video src="../media/D3-1929-scene2-iron-legs-tank-into-saloon.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Scene 2: a water tank on iron legs tips through a saloon wall and bursts."></video><figcaption>7:29 PM: the tank tips through the saloon wall and bursts. A silent editor recording.</figcaption></figure>
+</div>
+<aside class="box numbers"><p class="box-title">By the numbers, Fri 1:45 AM</p><div class="num-grid"><div class="num"><span class="num-v">70</span><span class="num-l">git commits since the jam began</span></div><div class="num"><span class="num-v">52</span><span class="num-l">Diversion commits (the game)</span></div><div class="num"><span class="num-v">49</span><span class="num-l">automated tests</span></div><div class="num"><span class="num-v">10</span><span class="num-l">packaged Windows builds</span></div><div class="num"><span class="num-v">3</span><span class="num-l">scenes</span></div><div class="num"><span class="num-v">12</span><span class="num-l">sim materials</span></div><div class="num"><span class="num-v">14</span><span class="num-l">Rodin models</span></div><div class="num"><span class="num-v">7</span><span class="num-l">Claude Code conversations</span></div><div class="num"><span class="num-v">101</span><span class="num-l">captures in the raw log</span></div></div></aside>
+
+<h2>What broke</h2>
+<p>The tools to create and place your sand and explosives were not at all intuitive or easy to use at first. It has taken constant change and iteration to keep the controls and tools intuitive while making them as dynamic and useful as possible, and I imagine I will continue to iterate on this non-stop until submission. For instance, the Powder Line (fuse) tool was too loose to place and broke its connections regularly (without you being able to tell), leading to an extremely underwhelming scene where only the first chunk of a fuse would burn. I fixed this by making the powder easier to place, and it now shows an orange line through and up to where the fuse will burn. Now it&rsquo;s easy to tell whether your connections are broken.</p>
+<figure class=""><img src="../media/D3-1604-fuse-glow-whole-vs-broken.jpg" alt="A powder line glowing all the way to its charge, and below it a broken line whose glow stops short." loading="lazy"><figcaption>4:04 PM: the fuse check in Prep. Top, the whole line glows to the charge; bottom, the line is broken and the glow stops short.</figcaption></figure>
+<p>Beyond that, another issue I had was the water tank in Scene 2. With the ability to destroy a raised water tank, you would hope its structure would fracture under stress, fall and break in a satisfying way. This took many attempts to get to a tank that falls the way you’d expect. I blew three of its four legs, and it still stood on the last one. Claude traced it in the code: the tank was holding itself up with its own water. So I asked, “are we able to make it so materials have a stress limit so it would tip over and be destroyed how you expect?” Claude wrote a design for load, tipping and breaks, Fable 5.2 reviewed it before any of it was built, and two spikes later the gag worked: blow the two legs on the saloon side, and the tank tips through the saloon wall, bursts and floods the street. This seems like a perfect use case for Claude, and thanks to how quickly it can iterate and figure out the code or calculations we need, I am able to work until we get the exact destruction I want.</p>
+<figure class=""><img src="../media/D3-1524-scene2-tank-on-one-leg.jpg" alt="A water tank standing on one remaining leg." loading="lazy"><figcaption>3:24 PM: three legs blown, and the tank still stood on the fourth, held up by its own water.</figcaption></figure>
+<h2>What worries me</h2>
+<p>I&rsquo;m having a hard time judging the difficulty of the scenes, and what order they should go in. It&rsquo;s difficult to drill down into the details and make each one challenging without it being a frustrating experience.</p>
+<h2>Next</h2>
+<p>I have the basic gameplay and look of my game. Now I want to make it as fun as possible while ensuring the gameplay is almost self-explanatory. I also want to continue to iterate on, improve and add to whatever models or structures the game has, making it look fully fledged and professional.</p>
+  </div>
+</article>
+<nav class="prevnext"> </nav>
+</main>
+<footer class="foot"><div class="tiles" aria-hidden="true"></div><p>BIGGER! is a solo entry to the Epic AI MegaJam 2026, made in Unreal Engine 5.9. Written by me; the facts are checked against my raw dev log.</p></footer>
+</body>
+</html>
