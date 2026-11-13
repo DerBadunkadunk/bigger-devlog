@@ -15,6 +15,10 @@ Posts are Markdown with a small front matter block and a few magazine blocks:
     ::: todo                      a writer's note; drafts only (--publish refuses it)
     :::                           closes the block
 
+The front page's words live in home.md: kicker, headline, tagline and footer in its front
+matter (one line each, Markdown allowed: *italics*, [links](https://...)), and the intro as
+its body. The footer shows on every page.
+
 An image alone on a line becomes a figure, its title the caption:
     ![alt text](media/file.jpg "Caption.")
 A .mp4 source becomes a silent looping video.
@@ -128,6 +132,12 @@ def to_html(text, todos):
     return re.sub(r"<p>\s*<img ([^>]*?)\s*/?>\s*</p>", figure, body)
 
 
+def inline(s):
+    """One line of Markdown (smart quotes, *italics*, links), without the <p>."""
+    out = markdown.markdown(s, extensions=["smarty"]).strip()
+    return re.sub(r"^<p>|</p>$", "", out)
+
+
 def words(text):
     text = re.sub(r"^:::.*$", "", text, flags=re.M)
     text = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", text)
@@ -154,7 +164,13 @@ def build(theme, out, publish):
         posts.append(meta)
     posts.sort(key=lambda p: p["order"])
 
+    home, home_text = read_post(ROOT / "home.md")
+    home_todos = []
+    intro = to_html(home_text, home_todos)
+
     left = [(p["slug"], len(p["todos"])) for p in posts if p["todos"]]
+    if home_todos:
+        left.append(("home", len(home_todos)))
     if publish and left:
         sys.exit(f"Refusing to publish: writer's notes left in {left}")
 
@@ -166,8 +182,8 @@ def build(theme, out, publish):
         shutil.copytree(ROOT / "media", out / "media")
     (out / ".nojekyll").write_text("", encoding="utf-8")
 
-    common = dict(site_title=site["title"], tagline=site["tagline"], theme=theme,
-                  author=site["author"], footer=site["footer"], base_url=site["base_url"])
+    common = dict(site_title=site["title"], theme=theme, author=site["author"],
+                  footer=inline(home.get("footer", "")), base_url=site["base_url"])
     for n, p in enumerate(posts):
         root = "../"
         prev_link = next_link = ""
@@ -201,7 +217,12 @@ def build(theme, out, publish):
         f'<span class="card-meta">{html.escape(p.get("dateline", ""))} · {p["minutes"]} min read</span></a>'
         for p in posts)
     (out / "index.html").write_text(
-        tpl_index.substitute(common, root="", cards=cards, intro=site["intro"]), encoding="utf-8")
+        tpl_index.substitute(
+            common, root="", cards=cards, intro=intro,
+            home_kicker=inline(home.get("kicker", "")), headline=inline(home.get("headline", site["title"])),
+            tagline=inline(home.get("tagline", "")),
+            description=re.sub("<[^>]+>", "", inline(home.get("tagline", "")))),
+        encoding="utf-8")
 
     for slug, n in left:
         print(f"WARNING {slug}: {n} writer's note(s) left (::: todo)")
