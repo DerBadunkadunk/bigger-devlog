@@ -19,6 +19,9 @@ Posts are Markdown with a small front matter block and a few magazine blocks:
     ::: todo                      a writer's note; drafts only (--publish refuses it)
     :::                           closes the block
 
+    TODO: text                    a one-line writer's note, also inside a box or pull quote;
+                                  --publish refuses it like a ::: todo block
+
 The front page's words live in home.md: kicker, headline, tagline and footer in its front
 matter (one line each, Markdown allowed: *italics*, [links](https://...)), and the intro as
 its body. The footer shows on every page.
@@ -96,18 +99,32 @@ def render_block(kind, arg, lines, todos):
     raise SystemExit(f"Unknown block ::: {kind}")
 
 
+TODO_LINE = re.compile(r"^\s*TODO:\s*(.*)$")
+
+
+def writer_note(line, todos):
+    """A `TODO: ...` line becomes a dashed note in previews; --publish refuses it."""
+    m = TODO_LINE.match(line)
+    if not m:
+        return line
+    todos.append(m.group(1)[:60])
+    return (f'\n<p class="todo todo-line"><span class="todo-label">You write</span> '
+            f'{html.escape(m.group(1))}</p>\n')
+
+
 def preprocess(text, todos):
     out, i, lines = [], 0, text.splitlines()
     while i < len(lines):
         m = BLOCK_OPEN.match(lines[i])
         if not m:
-            out.append(lines[i])
+            out.append(writer_note(lines[i], todos))
             i += 1
             continue
         kind, arg, inner = m.group(1), m.group(2), []
         i += 1
         while i < len(lines) and lines[i].strip() != ":::":
-            inner.append(lines[i])
+            line = lines[i]
+            inner.append(writer_note(line, todos) if kind in ("box", "pull") else line)
             i += 1
         i += 1  # the closing :::
         out += ["", render_block(kind, arg, inner, todos), ""]

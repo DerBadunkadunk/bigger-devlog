@@ -126,6 +126,8 @@ h2, .box, .pair, .wide { clear: both; }
 
 /* Writer's notes (drafts only; build.py --publish refuses them). */
 .todo { border: 2px dashed var(--todo); padding: 14px 18px 4px; margin: 24px 0; font: 400 .9rem/1.55 var(--mono); color: var(--muted); }
+.todo-line { padding: 10px 14px; }
+.todo-line .todo-label { display: inline; margin-right: 8px !important; }
 .todo-label { font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--todo); margin: 0 0 8px !important; }
 
 /* Previous / next. */
