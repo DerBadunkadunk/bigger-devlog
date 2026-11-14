@@ -3,6 +3,10 @@
     python build.py                 # build docs/ with the theme in site.json
     python build.py --theme callsheet --out _look/callsheet   # a look-first render
     python build.py --publish       # refuse if any post still has a ::: todo block
+    python build.py --out _look/preview --drafts   # preview, drafts included
+
+A post with `draft: yes` in its front matter is left out of every build unless --drafts
+is given, so docs/ (what GitHub Pages serves) never carries an unfinished post.
 
 Posts are Markdown with a small front matter block and a few magazine blocks:
 
@@ -148,7 +152,7 @@ def rebase(markup, root):
     return re.sub(r'(src|href)="(media|static)/', rf'\1="{root}\2/', markup)
 
 
-def build(theme, out, publish):
+def build(theme, out, publish, drafts=False):
     site = json.loads((ROOT / "site.json").read_text(encoding="utf-8"))
     theme = theme or site["theme"]
     tpl_post = Template((ROOT / "templates" / "post.html").read_text(encoding="utf-8"))
@@ -157,6 +161,9 @@ def build(theme, out, publish):
     posts = []
     for path in sorted((ROOT / "posts").glob("*.md")):
         meta, text = read_post(path)
+        if meta.get("draft", "").lower() in ("yes", "true") and not drafts:
+            print(f"SKIPPED {meta['slug']} (draft)")
+            continue
         todos = []
         meta["body"] = to_html(text, todos)
         meta["todos"] = todos
@@ -178,8 +185,13 @@ def build(theme, out, publish):
         shutil.rmtree(out)
     out.mkdir(parents=True)
     shutil.copytree(ROOT / "static", out / "static")
-    if (ROOT / "media").exists():
-        shutil.copytree(ROOT / "media", out / "media")
+    # Only the media the built posts use, so a draft's pictures don't ride along.
+    used = {p["hero"] for p in posts if p.get("hero")}
+    for p in posts:
+        used.update(re.findall(r'src="media/([^"]+)"', p["body"]))
+    (out / "media").mkdir()
+    for name in sorted(used):
+        shutil.copy2(ROOT / "media" / name, out / "media" / name)
     (out / ".nojekyll").write_text("", encoding="utf-8")
 
     common = dict(site_title=site["title"], theme=theme, author=site["author"],
@@ -234,5 +246,8 @@ if __name__ == "__main__":
     ap.add_argument("--theme")
     ap.add_argument("--out", default="docs")
     ap.add_argument("--publish", action="store_true")
+    ap.add_argument("--drafts", action="store_true", help="include posts marked draft: yes")
     a = ap.parse_args()
-    build(a.theme, ROOT / a.out, a.publish)
+    if a.publish and a.drafts:
+        sys.exit("--publish and --drafts don't mix: drafts never go to docs/")
+    build(a.theme, ROOT / a.out, a.publish, a.drafts)
