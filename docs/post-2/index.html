@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The finale, and a facelift · BIGGER! The Dev Log</title>
+<meta name="description" content="Friday: a fourth scene built around a steam train, a new face for the whole game, a stronger stuntman, and every set dressed.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The finale, and a facelift">
+<meta property="og:description" content="Friday: a fourth scene built around a steam train, a new face for the whole game, a stronger stuntman, and every set dressed.">
+<meta property="og:image" content="https://derbadunkadunk.github.io/bigger-devlog/media/D6-1620-scene4-finale-cue2.jpg">
+<meta property="og:url" content="https://derbadunkadunk.github.io/bigger-devlog/post-2/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../static/style.css">
+</head>
+<body class="theme-screening">
+<header class="mast">
+  <a class="mark" href="../">BIGGER!<span>The Dev Log</span></a>
+  <nav><a href="../">All posts</a></nav>
+</header>
+<div class="tiles" aria-hidden="true"></div>
+<main>
+<article>
+  <header class="head">
+    <p class="kicker">Post 2 · Friday</p>
+    <h1>The finale, and a facelift</h1>
+    <p class="standfirst">Friday: a fourth scene built around a steam train, a new face for the whole game, a stronger stuntman, and every set dressed.</p>
+    <p class="byline">By Duncan Rose <span>·</span> Nov 13, 2026 <span>·</span> 7 min read</p>
+  </header>
+  <figure class="hero"><img src="../media/D6-1620-scene4-finale-cue2.jpg" alt="A voxel gulch mid-explosion: a water tower and a trestle burst into flying pixel tiles while a stuntman in a yellow suit steps off a footbridge onto the far bank."><figcaption>Scene 4's 3-star rig: Cue 2 blows the water tower's legs as the lead reaches the far bank.</figcaption></figure>
+  <div class="body">
+<p>Continuing from where we left off, I managed to get the game much closer to my vision. I knew I still wanted to add some content, as well as make it more intuitive and pleasant to look at. This involved some initial UI work to make things more legible and interesting, dressing the sets to really make it feel like you are making films, and finally getting the finale into the game so it can be iterated on for maximum fun and spectacle.</p>
+<h2>Scene 4: the finale</h2>
+<p>In the ideation phase for the game, I threw my ideas around and asked Claude if they were manageable for me in the four available days. During this, we came up with a few level ideas that would fit the theme as well as provide an interesting sandbox to mess around in. One that Claude had mentioned was a bank where you need to blow open a safe without burning the cash (time permitting, I like the idea), but personally I had imagined a level with a train where you get to plan how to derail or destroy it.</p>
+<p>With both of these ideas in the back of my mind for the finale, when it came time to place it in the game I asked Claude what examples would show off every tool and function in the game. It gave me a look sheet, and option B immediately stood out to me. It looked like the perfect setup to iterate on until we manage the perfect finale. Currently, it doesn&rsquo;t live up to what I have in mind, but now that I have the proof of concept down, and I&rsquo;m further along on some of the parts I worried about time-wise, I plan to really focus tomorrow on bringing these scenes (especially the finale) to the next level. What I had imagined was the train actually moving, so you can destroy it while it still has some kinetic energy. Hopefully I will be able to get this to a satisfying point, time permitting.</p>
+<p>The finale as it is has some impressive opportunities for explosions and destruction, but it also made clear that our stuntman was still a little too sensitive to lesser debris. That led to a rule change (see &ldquo;One crumb too many&rdquo; below), which I think has improved the gameplay of every scene. I am really hoping the balancing and further drilling down into the details I&rsquo;m doing tomorrow will reveal more quirks like this, so I can keep tweaking and elevating the game. Using Claude Fable 5.2 to review the more technical or complicated parts of the game has also led to a lot of discoveries like this. I would have found them eventually myself (such as the water tower being welded to the trestle, so neither could ever tip), but it has really saved me some iteration and time.</p>
+<div class="wide">
+<figure class=""><img src="../media/D6-1509-scene4-spikes-sheet.jpg" alt="A sheet of three Scene 4 spike sets, each in Prep and at five moments of a scripted take: A Main Street, B The Gulch, C The High Line." loading="lazy"><figcaption>Three sets spiked from voxel boxes, each with a scripted take and the lead parked out of harm. I picked B, The Gulch.</figcaption></figure>
+</div>
+<div class="pair">
+<figure class=""><img src="../media/D6-1548-scene4-dressing-first-try-crowded.jpg" alt="Scene 4 with full-size town buildings close behind the set, crowding the train." loading="lazy"><figcaption>The town dressing's first try crowded the frame, with telegraph poles right behind the train.</figcaption></figure>
+<figure class=""><img src="../media/D6-1549-scene4-dressed-acam.jpg" alt="The same view with smaller buildings against the backdrop in the left and right thirds." loading="lazy"><figcaption>Fixed with forced perspective: the buildings stand against the backdrop at 60% scale.</figcaption></figure>
+</div>
+<aside class="box">
+<p class="box-title">Forced perspective, and a proof of concept</p>
+<p>Using Rodin, we created more props to dress the scenes, and I had Claude place them around the scenes as temporary (proof of concept) props. Claude&rsquo;s first placement crowded the frame, and its fix was forced perspective, which I then made the rule for every scene, because it makes each scene really pop. This also led to adding fog to the levels where it fits, which in my opinion takes these props and scenes to another level. Now that the idea and concept are in place and concrete, a major part of tomorrow will be going through each asset and either improving it, or completely regenerating, iterating on and editing new assets, until I have exactly what I want and what&rsquo;s right for each scene.</p>
+</aside>
+<div class="wide">
+<figure class=""><video src="../media/D6-1620-scene4-3-star-rig-set-fuel.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Scene 4's 3-star take: a powder magazine vents, oil spills, then the water tower and trestle come down as the lead crosses."></video><figcaption>Three stars from the set's own fuel. The magazine, the oil, then the tower's legs on Cue 2: 87% of the town down, lead safe. A silent editor recording.</figcaption></figure>
+</div>
+<h2>A facelift</h2>
+<p>One part of our new look was backdrops. Having backdrops seemed like an obvious choice, and from the beginning it was something I was looking forward to implementing. What I had imagined was the backdrop being the entire wall behind our scene, but Claude had recommended a physical screen placed behind the set, so I told it to give me a look sheet. As you can see in the image below, it was an interesting idea, but I definitely preferred, and stuck with, what I had in mind. I did like going through the options and seeing them in action, though, as I can now be confident I made the right choice.</p>
+<p>The other bit of facelift work was the UI, and things next to it. What we had on Thursday for the tools&rsquo; UI took up too much of the screen and was ugly. I knew the obvious choice was icons for the tools, with a title or descriptor on mouseover. Claude, using Aseprite and Meshy, was able to give me and implement what I wanted. It isn&rsquo;t perfect yet, and I still plan to iterate until it is exactly as I imagine. This goes for the menu and other UI as well. We have the beginnings of a &lsquo;BIGGER!&rsquo; in-game title that works for now, as well as a basic menu and UI look with some custom fonts, but this is another thing I really hope to improve on and align more with my vision tomorrow. As it stands, it is more Claude&rsquo;s idea of a title, menus and UI.</p>
+<figure class=""><img src="../media/D7-1812-backdrops-picked-wall-vs-flat.jpg" alt="A grid of the four scenes: each set before, with its painted backdrop on the back wall, and with the backdrop hung as a canvas flat." loading="lazy"><figcaption>My idea, a painted backdrop behind every set. Left, the set before; middle, the pick painted on the back wall; right, hung as a canvas flat. I picked the wall.</figcaption></figure>
+<figure class=""><img src="../media/D7-1812-kit-icons-a-b-c-sheet.jpg" alt="Three rows of seven tool icons: drawn by script, captured from the game, and AI images cut to the game's palette." loading="lazy"><figcaption>The kit's icons three ways: a, drawn by script in Aseprite; b, each piece captured from the game; c, AI images cut to the game's palette. I picked c.</figcaption></figure>
+<figure class=""><img src="../media/D7-1904-720p-silkscreen-garble-zoom.png" alt="A 4× zoom of two HUD labels in a pixel font, with broken letters; &quot;BUDGET&quot; reads &quot;PUDGET&quot;." loading="lazy"><figcaption>The packaged game at 720p, zoomed 4×: Silkscreen falls between its 8-pixel steps and “BUDGET” reads “PUDGET”. Now it's only used at sizes that land on whole pixels.</figcaption></figure>
+<aside class="box">
+<p class="box-title">One crumb too many</p>
+<ul>
+<li><strong>My play test note:</strong> the lead kept being struck by debris, but it didn&rsquo;t seem like much or was hard to see. It felt too sensitive.</li>
+<li><strong>The log of my session showed it:</strong> all six of my Scene 4 takes ended 1–3 s after ACTION, each struck by <strong>one 10 cm chunk</strong>.</li>
+<li><strong>Bent a rule, a spray, not a crumb:</strong> the lead needs to be struck by three hard chunks within 0.2 s. Falling beams, tipping structures and fire still strike at once. The rule only ever removes strikes.</li>
+<li><strong>Proved:</strong> two planted bugs, both caught. My own session, replayed under the new rule: my finale take now runs to the end, 70% of the town down.</li>
+<li><strong>The hit burst is pink:</strong> orange vanished in the fireball, and a red burst at a person reads as blood.</li>
+<li><strong>The R chip now says when a piece goes off</strong> (&ldquo;R: FIRE SETS IT OFF&rdquo;), after I found &ldquo;R: OWN WAY&rdquo; unclear. I still want to make this better.</li>
+</ul>
+</aside>
+<div class="pair">
+<figure class=""><img src="../media/D7-2002-scene4-strike-pink-burst.jpg" alt="The lead struck in Scene 4, with a pink burst on him and the CUT band along the bottom." loading="lazy"><figcaption>The lead hurt, here by fire, with a pink burst so you can see why.</figcaption></figure>
+<figure class=""><img src="../media/D7-2003-r-chip-four-states.jpg" alt="Four states of the R chip under the kit: fire sets it off, lights on ACTION, cues for charges and igniters, on Cue 1." loading="lazy"><figcaption>The R chip says when the selected piece goes off.</figcaption></figure>
+</div>
+<aside class="box">
+<p class="box-title">Dressing the sets</p>
+<ul>
+<li><strong>Themes I picked:</strong> a 1970s city street at dusk (Scene 1; Claude caught that the handoff&rsquo;s &ldquo;1950s&rdquo; didn&rsquo;t match the car), a western main street, a logging valley, and the menu.</li>
+<li><strong>16 new Rodin props</strong> (15 in the game), every one logo-checked. <strong>The newsstand failed:</strong> fake masthead lettering on its awning, so it came back as a kiosk. They aren&rsquo;t perfect yet, since so far I&rsquo;ve one-shot them; I need to iterate and improve.</li>
+<li><strong>A narrow lens:</strong> A-cam sees only a strip about 3 m wide beside each façade, so small props went to the back corners.</li>
+<li><strong>Another rule bend, the haze:</strong> it starts beyond the set, so the pixel tiles stay crisp, and only the back row and the backdrop soften.</li>
+<li><strong>An incident, caught:</strong> an old menu script failed silently, then deleted Scene 1&rsquo;s director and saved the map. Claude saw it straight away, restored Scene 1 from version control and dressed it again. The script now refuses unless its level really opened.</li>
+<li><strong>The cost, measured:</strong> the zip grew 4 MB (shrinking the old props&rsquo; textures paid for the new ones), and the GPU 0.18–0.39 ms per scene, under the 1 ms cap.</li>
+</ul>
+</aside>
+<div class="pair">
+<figure class=""><img src="../media/D8-2036-rodin-props-logo-check.jpg" alt="A grid of sixteen Rodin props on grey: buildings, a street light, barrels, a cactus, a cabin, a canoe and more." loading="lazy"><figcaption>The logo check on sixteen new props. The newsstand here is the kiosk that replaced one with fake lettering, and the rock went unused.</figcaption></figure>
+<figure class=""><img src="../media/D8-2331-menu-dressed.jpg" alt="The menu: a voxel BIGGER! sign above a city street with a painted dusk skyline and new buildings at the sides." loading="lazy"><figcaption>The menu, dressed. The street light was cut down afterwards, because its head touched the sign.</figcaption></figure>
+</div>
+<aside class="box numbers"><p class="box-title">By the numbers, end of Friday</p><div class="num-grid"><div class="num"><span class="num-v">100</span><span class="num-l">git commits (70 in Post 1)</span></div><div class="num"><span class="num-v">67</span><span class="num-l">Diversion commits (52)</span></div><div class="num"><span class="num-v">49</span><span class="num-l">automated tests, all passing</span></div><div class="num"><span class="num-v">15</span><span class="num-l">packaged Windows builds (10)</span></div><div class="num"><span class="num-v">4</span><span class="num-l">scenes (3)</span></div><div class="num"><span class="num-v">41</span><span class="num-l">Rodin models in the game (14)</span></div><div class="num"><span class="num-v">3</span><span class="num-l">rule bends on Friday, each named first</span></div><div class="num"><span class="num-v">11</span><span class="num-l">Claude Code conversations (7)</span></div><div class="num"><span class="num-v">145</span><span class="num-l">captures in the raw log (101)</span></div></div></aside>
+
+<h2>What worries me</h2>
+<p>I still need to properly balance my levels and make sure they really are fun, which I am sure will be the most difficult part. With the limited time and my planned feature freeze at midnight on Saturday, I hope I will be able to test and play each level enough to really drill down into what it needs or doesn&rsquo;t need.</p>
+<h2>Next</h2>
+<p>I plan to make sure all the assets are exactly as I imagine for the project. I need to improve how intuitive the menu and UI are, and how they look; I want a free-form sandbox level; I need a settings menu&hellip; there is too much to list. The first 80% of an idea is the easy part. The last 20% is where I think my design and decisions could really make or break the game.</p>
+  </div>
+</article>
+<nav class="prevnext"><a class="pn prev" href="../post-1/"><span>Previous</span>A day ahead of schedule</a> </nav>
+</main>
+<footer class="foot"><div class="tiles" aria-hidden="true"></div><p>BIGGER! is a solo entry to the Epic AI MegaJam 2026, made in Unreal Engine 5.9. Written by me; the facts are checked against my raw dev log.</p></footer>
+</body>
+</html>

@@ -3,7 +3,7 @@ title: A day ahead of schedule
 slug: post-1
 order: 1
 kicker: Post 1 · Night 0 + Thursday
-dateline: Nov 11–13, 2026
+dateline: Nov 12, 2026
 standfirst: Night 0 and the first full day: a falling-sand sim pulled into 3D, three looks thrown out, a car made of sand, and a water tower that refused to fall over.
 hero: D3-1401-scene2-flood-and-fire.jpg
 hero_alt: A voxel western street: water floods the ground under a raised iron tank, and a wooden saloon is on fire.
